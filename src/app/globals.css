@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+  --font-primary: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;}
 
 @theme inline {
   --color-background: var(--background);
@@ -19,8 +19,21 @@
   }
 }
 
+/* Add custom fonts here if you have local font files */
+/*
+@font-face {
+  font-family: 'Unica77';
+  src: url('/fonts/Unica77.otf') format('opentype');
+  font-display: swap;
+}
+
+:root {
+  --font-primary: 'Unica77', Arial, Helvetica, sans-serif;
+}
+*/
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary);
 }
