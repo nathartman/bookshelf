@@ -46,7 +46,7 @@ export default function Home() {
     <div className="">
       <div className="">
         {books.map((book, index) => (
-          <BookCard key={index} book={book} />
+          <BookCard key={index} bookHeight={180} book={book} />
         ))}
       </div>
     </div>

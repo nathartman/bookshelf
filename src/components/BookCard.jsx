@@ -1,16 +1,16 @@
 import BookSide from "./BookSide";
 import BookFront from "./BookFront";
 
-export default function BookCard({ book }) {
+export default function BookCard({ bookHeight, book }) {
   return (
     <div className="flex px-8 py-6 border-b border-muted">
       <div className="flex gap-4 shrink-0">
         <BookFront
-          height={160}
+          height={bookHeight}
           book={book}
         />
         <BookSide
-          height={160}
+          height={bookHeight}
           book={book}
         />
       </div>

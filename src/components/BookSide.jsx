@@ -1,8 +1,8 @@
 export default function BookSideView({ height, book }) {
   const containerWidth = height * 0.7;
-  const coverWidth = Math.round(height * 0.015);
+  const coverWidth = Math.round(height * 0.012);
   const pagesWidth = (book.pageCount / 100) * (height * 0.06);
-  const pagesHeight = height;
+  const pagesHeight = height * 0.995;
   const radius = height * 0.005;
 
   return (
@@ -15,17 +15,26 @@ export default function BookSideView({ height, book }) {
           width: ${coverWidth}px;
           height: ${height}px;
           border-radius: ${radius}px;
-          background-image: url("${book.coverUrl}");
+          background-color: #DEDCDA;
           opacity: 0.7;
-          background-size: cover;
-          background-repeat: no-repeat;
           box-shadow: 0 0 0 0.5px rgba(153, 161, 175, 0.5);
           flex-shrink: 0;
+          position: relative;
         }
-        .book-cover.left {
+        .book-cover::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: url("${book.coverUrl}");
+          background-size: cover;
+          background-repeat: no-repeat;
+          border-radius: ${radius}px;
+          mix-blend-mode: plus-darker;
+        }
+        .book-cover.left::after {
           background-position: right center;
         }
-        .book-cover.right {
+        .book-cover.right::after {
           background-position: left center;
         }
         .book-pages {
@@ -43,7 +52,7 @@ export default function BookSideView({ height, book }) {
       <div className="book-container flex items-center">
         <div className="book-cover left shadow-sm"></div>
         <div className="book-pages shadow-sm"></div>
-        <div className="book-cover right shadow-sm"></div>
+        <div className="book-cover right shadow-sm bg-stone-100"></div>
       </div>
     </>
   );

@@ -1,10 +1,10 @@
 export default function BookFront({ height, book }) {
   const leftRadius = height * 0.005;
-  const rightRadius = height * 0.012;
+  const rightRadius = height * 0.01;
 
   return (
     <div
-      className="relative shadow-sm"
+      className="relative shadow-sm bg-stone-50"
       style={{
         height: `${height}px`,
         aspectRatio: "2/3",
@@ -17,6 +17,7 @@ export default function BookFront({ height, book }) {
         style={{
           borderRadius: `${leftRadius}px ${rightRadius}px ${rightRadius}px ${leftRadius}px`,
           boxShadow: "inset 0 2px 0px 2px rgba(153, 161, 175, 1)",
+          mixBlendMode: "darken",
         }}
       />
       <div
