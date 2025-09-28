@@ -3,11 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --subtle: #71717a;
+  --border: rgba(0,0,0,0.10);
+  --border-muted: rgba(0,0,0,0.05);
   --font-primary: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;}
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-border-muted: var(--border-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,24 +21,74 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --subtle: #a1a1aa;
+    --border: rgba(255,255,255,0.15);
+    --border-muted: rgba(255,255,255,0.08);
   }
 }
 
-/* Add custom fonts here if you have local font files */
-/*
 @font-face {
   font-family: 'Unica77';
-  src: url('/fonts/Unica77.otf') format('opentype');
+  src: url('/fonts/Unica77LL-Regular.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ITC Garamond';
+  src: url('/fonts/ITCGaramondStd-LTNarrow.otf') format('opentype');
   font-display: swap;
 }
 
 :root {
   --font-primary: 'Unica77', Arial, Helvetica, sans-serif;
+  --font-serif: 'ITC Garamond', serif;
 }
-*/
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-primary);
+}
+
+.border-default {
+  border-color: var(--border);
+}
+
+.border-muted {
+  border-color: var(--border-muted);
+}
+
+.text-default {
+  color: var(--foreground);
+}
+
+.text-subtle {
+  color: var(--subtle);
+}
+
+.garamond-text {
+  font-family: var(--font-serif);
+  -webkit-text-stroke-width: 0.02em;
+  -webkit-text-stroke-color: currentcolor;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.book-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.book-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/book-overlay.png');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  mix-blend-mode: multiply;
 }
