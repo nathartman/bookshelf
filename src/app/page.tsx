@@ -5,9 +5,10 @@ import ListView from "../components/ListView";
 import GridView from "../components/GridView";
 import SeasonView from "../components/SeasonView";
 import BlobView from "../components/BlobView";
+import { type Book } from "../../lib/rssParser";
 
 export default function Home() {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [view, setView] = useState("list");
@@ -21,7 +22,24 @@ export default function Home() {
         return res.json();
       })
       .then((data) => {
-        setBooks(data);
+        // Sort books by readDate (most recent first)
+        const sortedBooks = [...data].sort((a, b) => {
+          if (!a.readDate && !b.readDate) return 0;
+          if (!a.readDate) return 1;
+          if (!b.readDate) return -1;
+
+          // Convert to Date objects for proper comparison
+          const dateA = new Date(a.readDate);
+          const dateB = new Date(b.readDate);
+
+          // Handle invalid dates
+          if (isNaN(dateA.getTime()) && isNaN(dateB.getTime())) return 0;
+          if (isNaN(dateA.getTime())) return 1;
+          if (isNaN(dateB.getTime())) return -1;
+
+          return dateB.getTime() - dateA.getTime(); // Most recent first
+        });
+        setBooks(sortedBooks);
         setLoading(false);
       })
       .catch((err) => {
@@ -62,27 +80,35 @@ export default function Home() {
     <div className="">
       <div className="p-4 border-b">
         <div className="flex gap-2">
-          <button 
+          <button
             onClick={() => setView("list")}
-            className={`px-3 py-1 text-sm ${view === "list" ? "bg-black text-white" : "bg-gray-200"}`}
+            className={`px-3 py-1 text-sm ${
+              view === "list" ? "bg-black text-white" : "bg-gray-200"
+            }`}
           >
             list
           </button>
-          <button 
+          <button
             onClick={() => setView("grid")}
-            className={`px-3 py-1 text-sm ${view === "grid" ? "bg-black text-white" : "bg-gray-200"}`}
+            className={`px-3 py-1 text-sm ${
+              view === "grid" ? "bg-black text-white" : "bg-gray-200"
+            }`}
           >
             grid
           </button>
-          <button 
+          <button
             onClick={() => setView("blob")}
-            className={`px-3 py-1 text-sm ${view === "blob" ? "bg-black text-white" : "bg-gray-200"}`}
+            className={`px-3 py-1 text-sm ${
+              view === "blob" ? "bg-black text-white" : "bg-gray-200"
+            }`}
           >
             blob
           </button>
-          <button 
+          <button
             onClick={() => setView("season")}
-            className={`px-3 py-1 text-sm ${view === "view3" ? "bg-black text-white" : "bg-gray-200"}`}
+            className={`px-3 py-1 text-sm ${
+              view === "view3" ? "bg-black text-white" : "bg-gray-200"
+            }`}
           >
             season
           </button>

@@ -1,6 +1,11 @@
 import BookCard from "./BookCard";
+import { type Book } from "../../lib/rssParser";
 
-export default function ListView({ books }) {
+interface ListViewProps {
+  books: Book[];
+}
+
+export default function ListView({ books }: ListViewProps) {
   return (
     <div className="">
       <div className="sm:hidden flex flex-col gap-16 py-16">

@@ -1,7 +1,13 @@
 import BookSide from "./BookSide";
 import BookFront from "./BookFront";
+import { type Book } from "../../lib/rssParser";
 
-export default function BookCard({ bookHeight, book }) {
+interface BookCardProps {
+  bookHeight: number;
+  book: Book;
+}
+
+export default function BookCard({ bookHeight, book }: BookCardProps) {
   return (
     <div className="flex flex-col sm:flex-row gap-6 sm:gap-0 px-6 sm:px-8 sm:py-6 sm:border-b border-muted">
       <div className="flex gap-4 shrink-0">

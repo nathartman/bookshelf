@@ -1,4 +1,11 @@
-export default function BookSideView({ height, book }) {
+import { type Book } from "../../lib/rssParser";
+
+interface BookSideViewProps {
+  height: number;
+  book: Book;
+}
+
+export default function BookSideView({ height, book }: BookSideViewProps) {
   const coverWidth = Math.round(height * 0.012);
   const pagesWidth = (book.pageCount / 100) * (height * 0.06);
   const pagesHeight = height * 0.995;

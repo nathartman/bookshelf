@@ -1,4 +1,11 @@
-export default function BookFront({ height, book }) {
+import { type Book } from "../../lib/rssParser";
+
+interface BookFrontProps {
+  height: number;
+  book: Book;
+}
+
+export default function BookFront({ height, book }: BookFrontProps) {
   const leftRadius = height * 0.005;
   const rightRadius = height * 0.01;
 

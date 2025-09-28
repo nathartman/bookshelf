@@ -1,12 +1,17 @@
 import BookFront from "./BookFront";
+import { type Book } from "../../lib/rssParser";
 
-export default function GridView({ books }) {
+interface GridViewProps {
+  books: Book[];
+}
+
+export default function GridView({ books }: GridViewProps) {
   return (
     <div className="">
       <div className="grid grid-cols-3 gap-4 p-6">
         {books.map((book) => (
-          <div key={book.id} className="col-span-1">
-            <BookFront book={book} />
+          <div key={book.isbn} className="col-span-1">
+            <BookFront book={book} height={200} />
           </div>
         ))}
       </div>

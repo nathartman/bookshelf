@@ -1,13 +1,19 @@
-export function parseDateRead(dateString) {
+interface SeasonInfo {
+  year: number;
+  dayOfYear: number;
+  season: string;
+}
+
+export function parseDateRead(dateString: string): SeasonInfo {
   const date = new Date(dateString);
 
   const year = date.getFullYear();
 
   const startOfYear = new Date(year, 0, 1);
   const dayOfYear =
-    Math.floor((date - startOfYear) / (24 * 60 * 60 * 1000)) + 1;
+    Math.floor((date.getTime() - startOfYear.getTime()) / (24 * 60 * 60 * 1000)) + 1;
 
-  let season;
+  let season: string;
   if (dayOfYear <= 59) {
     season = "winter"; // 1/1 - 2/29
   } else if (dayOfYear <= 151) {
