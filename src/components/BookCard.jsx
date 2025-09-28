@@ -1,11 +1,17 @@
+import BookSide from "./BookSide";
+import BookFront from "./BookFront";
+
 export default function BookCard({ book }) {
   return (
-    <div className="flex gap-8 px-8 py-6 border-b border-muted">
-      <div className="book-overlay shadow-sm">
-        <img
-          src={book.coverUrl}
-          alt={book.title}
-          className="h-40 aspect-2/3 object-cover rounded-l-[0.7px] rounded-r-[2.5px] opacity-90"
+    <div className="flex px-8 py-6 border-b border-muted">
+      <div className="flex gap-4 shrink-0">
+        <BookFront
+          height={160}
+          book={book}
+        />
+        <BookSide
+          height={160}
+          book={book}
         />
       </div>
       <div className="flex flex-col justify-between gap-3">
