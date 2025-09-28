@@ -1,12 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BookCard from "../components/BookCard";
+import ListView from "../components/ListView";
+import GridView from "../components/GridView";
+import SeasonView from "../components/SeasonView";
+import BlobView from "../components/BlobView";
 
 export default function Home() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [view, setView] = useState("list");
 
   useEffect(() => {
     fetch("/api/fetch-rss")
@@ -42,13 +46,49 @@ export default function Home() {
     );
   }
 
+  const renderView = () => {
+    if (view === "list") {
+      return <ListView books={books} />;
+    } else if (view === "grid") {
+      return <GridView books={books} />;
+    } else if (view === "season") {
+      return <SeasonView books={books} />;
+    } else if (view === "blob") {
+      return <BlobView books={books} />;
+    }
+  };
+
   return (
     <div className="">
-      <div className="">
-        {books.map((book, index) => (
-          <BookCard key={index} bookHeight={180} book={book} />
-        ))}
+      <div className="p-4 border-b">
+        <div className="flex gap-2">
+          <button 
+            onClick={() => setView("list")}
+            className={`px-3 py-1 text-sm ${view === "list" ? "bg-black text-white" : "bg-gray-200"}`}
+          >
+            list
+          </button>
+          <button 
+            onClick={() => setView("grid")}
+            className={`px-3 py-1 text-sm ${view === "grid" ? "bg-black text-white" : "bg-gray-200"}`}
+          >
+            grid
+          </button>
+          <button 
+            onClick={() => setView("blob")}
+            className={`px-3 py-1 text-sm ${view === "blob" ? "bg-black text-white" : "bg-gray-200"}`}
+          >
+            blob
+          </button>
+          <button 
+            onClick={() => setView("season")}
+            className={`px-3 py-1 text-sm ${view === "view3" ? "bg-black text-white" : "bg-gray-200"}`}
+          >
+            season
+          </button>
+        </div>
       </div>
+      {renderView()}
     </div>
   );
 }

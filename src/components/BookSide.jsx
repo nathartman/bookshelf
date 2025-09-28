@@ -1,5 +1,4 @@
 export default function BookSideView({ height, book }) {
-  const containerWidth = height * 0.7;
   const coverWidth = Math.round(height * 0.012);
   const pagesWidth = (book.pageCount / 100) * (height * 0.06);
   const pagesHeight = height * 0.995;
@@ -8,9 +7,6 @@ export default function BookSideView({ height, book }) {
   return (
     <>
       <style jsx>{`
-        .book-container {
-          width: ${containerWidth}px;
-        }
         .book-cover {
           width: ${coverWidth}px;
           height: ${height}px;
@@ -49,7 +45,7 @@ export default function BookSideView({ height, book }) {
           box-shadow: inset 0 -0.5px 0.5px rgba(153, 161, 175, 0.2);
         }
       `}</style>
-      <div className="book-container flex items-center">
+      <div className="flex items-center">
         <div className="book-cover left shadow-sm"></div>
         <div className="book-pages shadow-sm"></div>
         <div className="book-cover right shadow-sm bg-stone-100"></div>

@@ -1,4 +1,4 @@
-# Goodreads Bookshelf
+# Bookshelf
 
 A simple web app that displays your recently read books from Goodreads in a clean list format. Shows cover image, title, author, publication year, page count.
 
@@ -7,7 +7,7 @@ A simple web app that displays your recently read books from Goodreads in a clea
 1. **Clone and install**
    ```bash
    git clone your-repo-url
-   cd goodreads-bookshelf
+   cd bookshelf
    npm install
    ```
 
