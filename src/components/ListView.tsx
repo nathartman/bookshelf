@@ -1,5 +1,5 @@
-import BookCard from "./BookCard";
-import { type Book } from "../../lib/rssParser";
+import { type Book } from "../lib/rssParser";
+import BookDisplay from "./BookDisplay";
 
 interface ListViewProps {
   books: Book[];
@@ -7,15 +7,19 @@ interface ListViewProps {
 
 export default function ListView({ books }: ListViewProps) {
   return (
-    <div className="">
-      <div className="sm:hidden flex flex-col gap-16 py-16">
+    <div>
+      <div className="flex flex-col items-start gap-12 sm:gap-16 p-8 sm: max-w-xl mx-auto">
         {books.map((book, index) => (
-          <BookCard key={index} bookHeight={200} book={book} />
-        ))}
-      </div>
-      <div className="hidden sm:block">
-        {books.map((book, index) => (
-          <BookCard key={index} bookHeight={160} book={book} />
+          <div key={index} className="flex flex-col sm:flex-row gap-6 sm:gap-8">
+            <BookDisplay book={book} height={180} hasSide={true} />
+            <div className="flex flex-col justify-center">
+              <h3 className="text-xl garamond-text text-default text-balance mb-1">
+                {book.title}
+              </h3>
+              <p className="text-lg garamond-text text-subtle mb-2 sm:mb-5">{book.author}</p>
+              <p className="text-xs text-subtle tracking-wider">{book.publishYear}</p>
+            </div>
+          </div>
         ))}
       </div>
     </div>
