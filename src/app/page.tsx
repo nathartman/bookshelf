@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ListView from "../components/ListView";
+import ListView2 from "../components/ListView2";
 import GridView from "../components/GridView";
 import SeasonView from "../components/SeasonView";
-import BlobView from "../components/BlobView";
-import { type Book } from "../../lib/rssParser";
+import { type Book } from "../lib/rssParser";
 
 export default function Home() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -48,73 +47,69 @@ export default function Home() {
       });
   }, []);
 
-  if (loading) {
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <div className="font-mono text-center">Loading books...</div>
-      </div>
-    );
-  }
+  const renderContent = () => {
+    if (loading) {
+      return (
+        <div className="flex items-center justify-center h-full">
+          <div className="font-mono text-center">Loading books...</div>
+        </div>
+      );
+    }
 
-  if (error) {
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <div className="font-mono text-center text-red-600">Error: {error}</div>
-      </div>
-    );
-  }
+    if (error) {
+      return (
+        <div className="flex items-center justify-center h-full">
+          <div className="font-mono text-center text-red-600">Error: {error}</div>
+        </div>
+      );
+    }
+
+    return renderView();
+  };
 
   const renderView = () => {
     if (view === "list") {
-      return <ListView books={books} />;
+      return <ListView2 books={books} />;
     } else if (view === "grid") {
       return <GridView books={books} />;
     } else if (view === "season") {
       return <SeasonView books={books} />;
-    } else if (view === "blob") {
-      return <BlobView books={books} />;
     }
   };
 
   return (
-    <div className="">
-      <div className="p-4 border-b">
+    <div className="flex flex-col h-screen">
+      <div className="shrink-0 p-4 border-b bg-white z-10">
         <div className="flex gap-2">
           <button
             onClick={() => setView("list")}
-            className={`px-3 py-1 text-sm ${
-              view === "list" ? "bg-black text-white" : "bg-gray-200"
+            className={`px-3 py-1 text-sm rounded ${
+              view === "list" ? "bg-black text-white" : "bg-gray-200 hover:bg-gray-300"
             }`}
           >
             list
           </button>
           <button
             onClick={() => setView("grid")}
-            className={`px-3 py-1 text-sm ${
-              view === "grid" ? "bg-black text-white" : "bg-gray-200"
+            className={`px-3 py-1 text-sm rounded ${
+              view === "grid" ? "bg-black text-white" : "bg-gray-200 hover:bg-gray-300"
             }`}
           >
             grid
           </button>
           <button
-            onClick={() => setView("blob")}
-            className={`px-3 py-1 text-sm ${
-              view === "blob" ? "bg-black text-white" : "bg-gray-200"
-            }`}
-          >
-            blob
-          </button>
-          <button
             onClick={() => setView("season")}
-            className={`px-3 py-1 text-sm ${
-              view === "view3" ? "bg-black text-white" : "bg-gray-200"
+            className={`px-3 py-1 text-sm rounded ${
+              view === "season" ? "bg-black text-white" : "bg-gray-200 hover:bg-gray-300"
             }`}
           >
             season
           </button>
         </div>
       </div>
-      {renderView()}
+      <div className="flex-1 overflow-y-auto">
+        {renderContent()}
+      </div>
     </div>
   );
 }
