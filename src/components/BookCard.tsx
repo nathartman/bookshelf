@@ -1,6 +1,6 @@
 import BookSide from "./BookSide";
 import BookFront from "./BookFront";
-import { type Book } from "../../lib/rssParser";
+import { type Book } from "../lib/rssParser";
 
 interface BookCardProps {
   bookHeight: number;

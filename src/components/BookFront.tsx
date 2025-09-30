@@ -1,4 +1,4 @@
-import { type Book } from "../../lib/rssParser";
+import { type Book } from "../lib/rssParser";
 
 interface BookFrontProps {
   height: number;

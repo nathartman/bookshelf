@@ -1,5 +1,5 @@
 import { RSS_URL } from '../../../../config/rss';
-import { parseRSSToBooks } from '../../../../lib/rssParser';
+import { parseRSSToBooks } from '../../../lib/rssParser';
 
 export async function GET(): Promise<Response> {
   try {

@@ -1,4 +1,4 @@
-import { type Book } from "../../lib/rssParser";
+import { type Book } from "../lib/rssParser";
 
 interface BookSideViewProps {
   height: number;
@@ -7,8 +7,8 @@ interface BookSideViewProps {
 
 export default function BookSideView({ height, book }: BookSideViewProps) {
   const coverWidth = Math.round(height * 0.012);
-  const pagesWidth = (book.pageCount / 100) * (height * 0.06);
-  const pagesHeight = height * 0.995;
+  const pagesWidth = (book.pageCount / 100) * (height * 0.05);
+  const pagesHeight = height * 0.99;
   const radius = height * 0.005;
 
   return (
@@ -43,18 +43,27 @@ export default function BookSideView({ height, book }: BookSideViewProps) {
         .book-pages {
           width: ${pagesWidth}px;
           height: ${pagesHeight}px;
-          background-color: white;
-          background-image: url("/book-pages-overlay.png");
-          background-size: cover;
-          background-position: center;
+          position: relative;
+          overflow: hidden;
           border-top: 0.5px solid #e5e7eb;
           border-bottom: 0.5px solid #e5e7eb;
           box-shadow: inset 0 -0.5px 0.5px rgba(153, 161, 175, 0.2);
         }
+        .book-pages::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: url("/book-pages-overlay.png");
+          background-size: cover;
+          background-position: center;
+          border-radius: ${radius}px;
+          mix-blend-mode: plus-darker;
+          pointer-events: none;
+        }
       `}</style>
       <div className="flex items-center">
         <div className="book-cover left shadow-sm"></div>
-        <div className="book-pages shadow-sm"></div>
+        <div className="book-pages shadow-sm dark:bg-stone-200"></div>
         <div className="book-cover right shadow-sm bg-stone-100"></div>
       </div>
     </>
