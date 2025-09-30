@@ -4,8 +4,8 @@ interface SeasonInfo {
   season: string;
 }
 
-export function parseDateRead(dateString: string): SeasonInfo {
-  const date = new Date(dateString);
+export function parseDateRead(dateString?: string): SeasonInfo {
+  const date = dateString ? new Date(dateString) : new Date();
 
   const year = date.getFullYear();
 
