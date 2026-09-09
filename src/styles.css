@@ -1,0 +1,224 @@
+.grb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 0;
+  padding: 2rem 0;
+  list-style: none;
+}
+
+.grb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-inline: 1.5rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
+}
+
+.grb-book {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+.grb-front {
+  position: relative;
+  flex-shrink: 0;
+  height: var(--grb-height-mobile);
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: var(--grb-left-radius-mobile)
+    var(--grb-right-radius-mobile) var(--grb-right-radius-mobile)
+    var(--grb-left-radius-mobile);
+  background: #fafaf9;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.grb-cover-image,
+.grb-edge-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grb-cover-image {
+  opacity: 0.85;
+  mix-blend-mode: darken;
+}
+
+.grb-cover-fallback {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.75rem;
+  color: #a1a1aa;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.grb-cover-overlay,
+.grb-pages-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-position: center;
+  background-size: cover;
+  mix-blend-mode: multiply;
+}
+
+.grb-cover-overlay {
+  background-image: url("./assets/book-overlay.png");
+}
+
+.grb-side {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.grb-edge {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--grb-edge-width-mobile);
+  height: var(--grb-height-mobile);
+  overflow: hidden;
+  border-radius: var(--grb-left-radius-mobile);
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.5px rgb(153 161 175 / 50%);
+}
+
+.grb-edge-left {
+  background: #dedcda;
+}
+
+.grb-edge-right {
+  background: #f5f5f4;
+}
+
+.grb-edge-image {
+  mix-blend-mode: plus-darker;
+}
+
+.grb-edge-left .grb-edge-image {
+  object-position: right center;
+}
+
+.grb-edge-right .grb-edge-image {
+  object-position: left center;
+}
+
+.grb-pages {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--grb-pages-width-mobile);
+  height: var(--grb-pages-height-mobile);
+  overflow: hidden;
+  border-block: 0.5px solid #e5e7eb;
+  background: #fff;
+  box-shadow: inset 0 -0.5px 0.5px rgb(153 161 175 / 20%);
+}
+
+.grb-pages-overlay {
+  border-radius: var(--grb-left-radius-mobile);
+  background-image: url("./assets/book-pages-overlay.png");
+  mix-blend-mode: plus-darker;
+}
+
+.grb-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.grb-title {
+  max-width: 20rem;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+}
+
+.grb-author,
+.grb-year {
+  color: var(--grb-muted-color, #71717a);
+  font-size: 0.875rem;
+}
+
+.grb-author {
+  margin: 0.25rem 0 0;
+}
+
+@media (min-width: 30rem) {
+  .grb-card {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 40rem) {
+  .grb-list {
+    display: block;
+    padding-block: 0;
+  }
+
+  .grb-card {
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgb(0 0 0 / 5%);
+    contain-intrinsic-size: auto 208px;
+  }
+
+  .grb-front,
+  .grb-edge {
+    height: var(--grb-height-desktop);
+  }
+
+  .grb-front {
+    border-radius: var(--grb-left-radius-desktop)
+      var(--grb-right-radius-desktop) var(--grb-right-radius-desktop)
+      var(--grb-left-radius-desktop);
+  }
+
+  .grb-edge {
+    width: var(--grb-edge-width-desktop);
+    border-radius: var(--grb-left-radius-desktop);
+  }
+
+  .grb-pages {
+    width: var(--grb-pages-width-desktop);
+    height: var(--grb-pages-height-desktop);
+  }
+
+  .grb-pages-overlay {
+    border-radius: var(--grb-left-radius-desktop);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .grb-author,
+  .grb-year {
+    color: var(--grb-muted-color-dark, #a1a1aa);
+  }
+
+  .grb-pages {
+    background: #e7e5e4;
+  }
+
+  @media (min-width: 40rem) {
+    .grb-card {
+      border-bottom-color: rgb(255 255 255 / 8%);
+    }
+  }
+}
+
