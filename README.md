@@ -4,6 +4,8 @@ Turn a Goodreads RSS feed into a tactile React bookshelf. Book covers keep their
 natural proportions, while each side view scales its thickness from the book's
 page count.
 
+[See it on nat-hartman.net](https://nat-hartman-dot-net.vercel.app/bookshelf)
+
 ## Install from GitHub
 
 ```bash
