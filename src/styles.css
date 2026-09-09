@@ -152,7 +152,9 @@
 .grb-author,
 .grb-year {
   color: var(--grb-muted-color, #71717a);
+  font-weight: 400;
   font-size: 0.875rem;
+  -webkit-text-stroke-width: 0;
 }
 
 .grb-author {
@@ -221,4 +223,3 @@
     }
   }
 }
-

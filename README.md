@@ -9,7 +9,7 @@ page count.
 ## Install from GitHub
 
 ```bash
-npm install github:nathartman/goodreads-bookshelf-ui#v0.1.0
+npm install github:nathartman/goodreads-bookshelf-ui#v0.1.1
 ```
 
 This first release ships TypeScript source. In Next.js, add the package to
