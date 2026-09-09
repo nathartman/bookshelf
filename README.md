@@ -34,11 +34,14 @@ GOODREADS_RSS_URL="https://www.goodreads.com/review/list_rss/YOUR_ID?key=YOUR_KE
 
 ## Render the shelf
 
+Import the stylesheet once wherever you render the shelf:
+
 ```tsx
 import {
   BookList,
   getGoodreadsBooks,
 } from "@nathartman/goodreads-bookshelf";
+import "@nathartman/goodreads-bookshelf/styles.css";
 
 export default async function BookshelfPage() {
   const books = await getGoodreadsBooks({
