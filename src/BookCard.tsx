@@ -32,18 +32,18 @@ function geometryStyle(
   const pages = pageCount ?? 0;
 
   return {
-    "--grb-height-mobile": `${mobile}px`,
-    "--grb-height-desktop": `${desktop}px`,
-    "--grb-pages-height-mobile": `${mobile * 0.99}px`,
-    "--grb-pages-height-desktop": `${desktop * 0.99}px`,
-    "--grb-pages-width-mobile": `${(pages / 100) * (mobile * 0.05)}px`,
-    "--grb-pages-width-desktop": `${(pages / 100) * (desktop * 0.05)}px`,
-    "--grb-edge-width-mobile": `${Math.max(1, Math.round(mobile * 0.012))}px`,
-    "--grb-edge-width-desktop": `${Math.max(1, Math.round(desktop * 0.012))}px`,
-    "--grb-left-radius-mobile": `${mobile * 0.005}px`,
-    "--grb-left-radius-desktop": `${desktop * 0.005}px`,
-    "--grb-right-radius-mobile": `${mobile * 0.01}px`,
-    "--grb-right-radius-desktop": `${desktop * 0.01}px`,
+    "--bookshelf-height-mobile": `${mobile}px`,
+    "--bookshelf-height-desktop": `${desktop}px`,
+    "--bookshelf-pages-height-mobile": `${mobile * 0.99}px`,
+    "--bookshelf-pages-height-desktop": `${desktop * 0.99}px`,
+    "--bookshelf-pages-width-mobile": `${(pages / 100) * (mobile * 0.05)}px`,
+    "--bookshelf-pages-width-desktop": `${(pages / 100) * (desktop * 0.05)}px`,
+    "--bookshelf-edge-width-mobile": `${Math.max(1, Math.round(mobile * 0.012))}px`,
+    "--bookshelf-edge-width-desktop": `${Math.max(1, Math.round(desktop * 0.012))}px`,
+    "--bookshelf-left-radius-mobile": `${mobile * 0.005}px`,
+    "--bookshelf-left-radius-desktop": `${desktop * 0.005}px`,
+    "--bookshelf-right-radius-mobile": `${mobile * 0.01}px`,
+    "--bookshelf-right-radius-desktop": `${desktop * 0.01}px`,
   } as CSSProperties;
 }
 
@@ -56,21 +56,21 @@ export function BookCard({
 }: BookCardProps) {
   return (
     <li
-      className={`grb-card ${className}`.trim()}
+      className={`bookshelf-card ${className}`.trim()}
       style={geometryStyle(bookHeight, book.pageCount)}
     >
-      <div className="grb-book">
+      <div className="bookshelf-book">
         <BookFront book={book} eager={eager} />
         {showSide && <BookSide book={book} eager={eager} />}
       </div>
 
-      <div className="grb-details">
+      <div className="bookshelf-details">
         <div>
-          <h2 className="grb-title">{book.title}</h2>
-          <p className="grb-author">{book.author}</p>
+          <h2 className="bookshelf-title">{book.title}</h2>
+          <p className="bookshelf-author">{book.author}</p>
         </div>
 
-        {book.publishYear && <div className="grb-year">{book.publishYear}</div>}
+        {book.publishYear && <div className="bookshelf-year">{book.publishYear}</div>}
       </div>
     </li>
   );

@@ -17,7 +17,7 @@ export function BookList({
   className = "",
 }: BookListProps) {
   return (
-    <ol className={`grb-list ${className}`.trim()}>
+    <ol className={`bookshelf-list ${className}`.trim()}>
       {books.map((book, index) => (
         <BookCard
           key={book.id}

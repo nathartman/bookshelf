@@ -7,7 +7,7 @@ export interface BookFrontProps {
 
 export function BookFront({ book, eager = false }: BookFrontProps) {
   return (
-    <div className="grb-front">
+    <div className="bookshelf-front">
       {book.coverUrl ? (
         <img
           src={book.coverUrl}
@@ -15,13 +15,13 @@ export function BookFront({ book, eager = false }: BookFrontProps) {
           loading={eager ? "eager" : "lazy"}
           fetchPriority={eager ? "high" : "auto"}
           decoding="async"
-          className="grb-cover-image"
+          className="bookshelf-cover-image"
         />
       ) : (
-        <div className="grb-cover-fallback">No cover</div>
+        <div className="bookshelf-cover-fallback">No cover</div>
       )}
 
-      <div aria-hidden="true" className="grb-cover-overlay" />
+      <div aria-hidden="true" className="bookshelf-cover-overlay" />
     </div>
   );
 }
