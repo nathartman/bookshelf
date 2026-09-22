@@ -1,11 +1,11 @@
 {
-  "name": "@nathartman/goodreads-bookshelf",
-  "version": "0.1.1",
+  "name": "@nathartman/bookshelf",
+  "version": "0.2.0",
   "description": "Turn a Goodreads RSS feed into a tactile React bookshelf.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nathartman/goodreads-bookshelf-ui.git"
+    "url": "git+https://github.com/nathartman/bookshelf.git"
   },
   "type": "module",
   "sideEffects": [

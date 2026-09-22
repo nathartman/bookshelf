@@ -8,7 +8,7 @@ interface CoverEdgeProps {
 
 function CoverEdge({ book, eager, side }: CoverEdgeProps) {
   return (
-    <div className={`grb-edge grb-edge-${side}`}>
+    <div className={`bookshelf-edge bookshelf-edge-${side}`}>
       {book.coverUrl && (
         <img
           src={book.coverUrl}
@@ -17,7 +17,7 @@ function CoverEdge({ book, eager, side }: CoverEdgeProps) {
           loading={eager ? "eager" : "lazy"}
           fetchPriority={eager ? "high" : "auto"}
           decoding="async"
-          className="grb-edge-image"
+          className="bookshelf-edge-image"
         />
       )}
     </div>
@@ -31,10 +31,10 @@ export interface BookSideProps {
 
 export function BookSide({ book, eager = false }: BookSideProps) {
   return (
-    <div className="grb-side" aria-hidden="true">
+    <div className="bookshelf-side" aria-hidden="true">
       <CoverEdge book={book} eager={eager} side="left" />
-      <div className="grb-pages">
-        <div className="grb-pages-overlay" />
+      <div className="bookshelf-pages">
+        <div className="bookshelf-pages-overlay" />
       </div>
       <CoverEdge book={book} eager={eager} side="right" />
     </div>
